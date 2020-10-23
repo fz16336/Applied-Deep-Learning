@@ -6,4 +6,4 @@ The work done on Environmental Sound Classification (ESC) Using Two-streamed CNN
 
 Therefore, to solve both of those problems, Su et al claim that (1) combination of acoustic features used in speech or music recognition via late fusion methods would make a suitable features set for ESC. And that (2) a stacked neural network of two-streamed CNNs (with late-fusion during testing) can outperform other models of the time on known datasets such as the _UrbanSound8K_.
 
-![Architecture](/Applied-Deep-Learning/figures/architecture.png)
+![Architecture](/figures/architecture.png)
