@@ -1,10 +1,10 @@
 # Applied Deep Learning
 
-This is a personal repository for the coursework assesment of the master-level unit in Applied Deep Learning (COMSM0018), taken at the University of Bristol for the Master of Engineering (MEng) degree.  
+This is a personal repository for the coursework assesment of the master-level unit in Applied Deep Learning (COMSM0018 - 2019/2020), taken at the University of Bristol for the Master of Engineering (MEng) degree.  
 
 The coursework assesses skill in applying deep learning knowledge by replicating a published research on a SOTA model for sound classification. The referenced work is '_Environment Sound Classification using a Two-Stream CNN Based on Decision-Level Fusion_' by Yu Su et al. You can review the paper [here](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6479959/pdf/sensors-19-01733.pdf) or read the attached [pdf file](Environmental_Sound_Classification.pdf). Additionally, our group report detailing the process of our implementation can be found in this repository [here](Applied_Deep_Learning_Coursework.pdf).
 
-Our code was implemented using _PyTorch_ version 1.2.0 and was written for high performance computing where training were done on the University of Bristol's supercomputer _BlueCrystal4_. Our result achived upto a 5% accuracy margin as those reported by the published work given some adjustment from the coursework instruction. We achived a First-Class mark for our implementation.
+Our code was implemented using _PyTorch_ version 1.2.0 and was written for high performance computing where training run on the University of Bristol's supercomputer _BlueCrystal4_. Our result achived up to a 5% accuracy difference as those reported by the published work - given some adjustment from the coursework instruction. Overall, we achived a First-Class mark for our implementation.
 
 ### List of Dependencies
 - Python 3.7
@@ -25,13 +25,6 @@ Environmental Sound Classification (ESC) is a major task in the growing field of
 The work done on Environmental Sound Classification (ESC) Using Two-streamed CNN with Decision Level Fusion by Su et al, is an attempt to produce a SOTA model for solving ESC tasks i.e. classifying sounds commonly heard in background noises. One of the challenges of ESC is that commonly known acoustic features, such as those typically used in speech or music recognition are insufficient representation of environmental sounds; since the latter are typically non-stationary and have higher temporal variance. Second known issue is an unsatisfactory history of classifiers for ESC. Existing models are either lacking in temporal invariance or failing to reach high accuracy prediction. 
 
 Therefore, to solve both of those problems, Su et al claim that (1) combination of acoustic features used in speech or music recognition via late fusion methods would make a suitable features set for ESC. And that (2) a stacked neural network of two-streamed CNNs (with late-fusion during testing) can outperform other models of the time on known datasets such as the _UrbanSound8K_.
-
-
-## The model architecture
-
-The main architecture of the model proposed is a stacked CNN of two-stream identical network with 4 convolution layers, and 2 fully connected layers with a softmax layer at the end. Below is a personally illustrated depiction of the architecture.
-
-![Architecture](/figures/architecture.png)
 
 ## The dataset and input features
 
@@ -61,8 +54,17 @@ The dataset is structured as a list of dictionaries and in the format of PyTorch
     - *spectral_contrast*
     - *Tonnetz*
 
+Below is a spectogram representation of the 5 acoustic input features.
 ![Inputs](/figures/input_features.png)
-As part of following the ETL process, we used PyTorch's DataLoader utility to   
 
+Furthermore, as part the ETL process, we used PyTorch's DataLoader utility to load the different inputs for training the network.
+
+## The model architecture
+
+The main architecture of the model proposed is a stacked convolutional neural network (CNN) of two-stream identical network with 4 convolution layers, and 2 fully connected layers with a softmax layer at the end. Below is a personally illustrated depiction of the architecture.
+
+![Architecture](/figures/architecture.png)
+
+Top stream is LMCNet, bottom stream is MCNet. Yellow layers indicate convolution layers, whilst purple ones are fully-connected networks. The red layer represents a pooling layer after max-pooling, to add clarity to the confusion in the paper. Filters of size $3\times3\times d$ are convolution filters, whilst $2\times2\times d$ are pooling filters, and $d\in\{32,64\}$ is the hyperparameter indicating the number of filters used in that specific layer
 
 
