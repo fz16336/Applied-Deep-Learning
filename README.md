@@ -59,7 +59,7 @@ Below is a spectogram representation of the 5 acoustic input features. Note, the
 <!-- ![Inputs](/figures/input_features.png)  -->
 <img src="/figures/input_features.png" alt="input" width="500"/>
 
-Furthermore, as part the ETL process, we used PyTorch's DataLoader utility to load the different inputs for training the network.
+Furthermore, as part of the ETL process, we used PyTorch's DataLoader utility to load the different inputs for training the network.
 
 ## The model architecture
 
@@ -73,7 +73,7 @@ to confirm late-fusion effectiveness, another variation of the
 architecture, denoted as *MLMCNet* is created. Where all five
 features are combined linearly into one feature set named
 MLMC, and then passed into a single CNN identical to either
-of the streams. The crux of the original authors’ claim is that predictions made with late-fusion (TCSNNNet) would outperform other models such as MLMCNet, LMCNet, MCNet.
+of the streams. The crux of the original authors’ claim is that predictions made with late-fusion (*TCSNNNet*) would outperform other models such as *MLMCNet*, *LMCNet*, *MCNet*.
 
 Below is a personally illustrated depiction of the architecture.
 
