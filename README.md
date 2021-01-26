@@ -56,7 +56,8 @@ The dataset is structured as a list of dictionaries and in the format of PyTorch
 
 Below is a spectogram representation of the 5 acoustic input features. Note, the last 3 input features (*chroma*,*spectral_contrast*,*Tonnetz*) are aggregated to form one feature set called CST.
 
-![Inputs](/figures/input_features.png)
+<!-- ![Inputs](/figures/input_features.png)  -->
+<img src="/figures/input_features.png" alt="input" width="200"/>
 
 Furthermore, as part the ETL process, we used PyTorch's DataLoader utility to load the different inputs for training the network.
 
@@ -78,7 +79,7 @@ Below is a personally illustrated depiction of the architecture.
 
 ![Architecture](/figures/architecture.png)
 
-Top stream is LMCNet, bottom stream is MCNet. Yellow layers indicate convolution layers, whilst purple ones are fully-connected networks. The red layer represents a pooling layer after max-pooling, to add clarity to the confusion in the paper. Filters of size 3x3xd are convolution filters, whilst 2x2xd are pooling filters, and $d\in\{32,64\} $ is the hyperparameter indicating the number of filters used in that specific layer.
+Top stream is LMCNet, bottom stream is MCNet. Yellow layers indicate convolution layers, whilst purple ones are fully-connected networks. The red layer represents a pooling layer after max-pooling, to add clarity to the confusion in the paper. Filters of size 3x3xd are convolution filters, whilst 2x2xd are pooling filters, and d being 32 or 64 is the hyperparameter indicating the number of filters used in that specific layer.
 
 
 
