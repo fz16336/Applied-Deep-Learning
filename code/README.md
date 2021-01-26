@@ -24,8 +24,7 @@ MCNet results automatically.
 
 To change the hyperparameters simply specify the arguments and its value as you call main.py on the command line. Like so:
 
-    '''
     python main.py --epoch 10000 --learning-rate 0.01
-    '''
+
 
 
