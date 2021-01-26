@@ -1,0 +1,18 @@
+Using CUDA...
+Writing logs to logs/CNN_bn_epochs=50_dropout=0.5_bs=32_lr=0.001_momentum=0.9_mode=LMC_run_29
+Traceback (most recent call last):
+  File "train_urbansound.py", line 584, in <module>
+    main(parser.parse_args())
+  File "train_urbansound.py", line 172, in main
+    log_frequency=args.log_frequency,
+  File "train_urbansound.py", line 418, in train
+    loss = self.criterion(logits, labels)
+  File "/mnt/storage/software/languages/anaconda/Anaconda3-2019.07/lib/python3.7/site-packages/torch/nn/modules/module.py", line 547, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/mnt/storage/software/languages/anaconda/Anaconda3-2019.07/lib/python3.7/site-packages/torch/nn/modules/loss.py", line 916, in forward
+    ignore_index=self.ignore_index, reduction=self.reduction)
+  File "/mnt/storage/software/languages/anaconda/Anaconda3-2019.07/lib/python3.7/site-packages/torch/nn/functional.py", line 1995, in cross_entropy
+    return nll_loss(log_softmax(input, 1), target, weight, None, ignore_index, None, reduction)
+  File "/mnt/storage/software/languages/anaconda/Anaconda3-2019.07/lib/python3.7/site-packages/torch/nn/functional.py", line 1824, in nll_loss
+    ret = torch._C._nn.nll_loss(input, target, weight, _Reduction.get_enum(reduction), ignore_index)
+RuntimeError: Expected object of backend CUDA but got backend CPU for argument #3 'weight'

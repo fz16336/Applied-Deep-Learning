@@ -1,0 +1,7 @@
+Using CUDA...
+Traceback (most recent call last):
+  File "train_urbansound.py", line 701, in <module>
+    main(parser.parse_args())
+  File "train_urbansound.py", line 161, in main
+    data_weight = torch.Tensor(6299/(np.array([6295,1825,6248,5121,5682,6282,1112,5886,5819,6299]))).to(DEVICE)
+RuntimeError: CUDA error: out of memory

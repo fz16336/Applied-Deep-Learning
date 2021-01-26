@@ -1,0 +1,18 @@
+Using CUDA...
+Writing logs to logs/CNN_bn_epochs=50_dropout=0.5_bs=32_lr=0.001_momentum=0.9_mode=LMC_run_2
+Traceback (most recent call last):
+  File "train_urbansound.py", line 574, in <module>
+    main(parser.parse_args())
+  File "train_urbansound.py", line 171, in main
+    log_frequency=args.log_frequency,
+  File "train_urbansound.py", line 405, in train
+    logits = self.model.forward(batch)
+  File "train_urbansound.py", line 346, in forward
+    x = self.fc1(self.dropout(x))
+  File "/mnt/storage/software/languages/anaconda/Anaconda3-2019.07/lib/python3.7/site-packages/torch/nn/modules/module.py", line 547, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/mnt/storage/software/languages/anaconda/Anaconda3-2019.07/lib/python3.7/site-packages/torch/nn/modules/linear.py", line 87, in forward
+    return F.linear(input, self.weight, self.bias)
+  File "/mnt/storage/software/languages/anaconda/Anaconda3-2019.07/lib/python3.7/site-packages/torch/nn/functional.py", line 1369, in linear
+    ret = torch.addmm(bias, input, weight.t())
+RuntimeError: size mismatch, m1: [32 x 15360], m2: [15488 x 1024] at /opt/conda/conda-bld/pytorch_1565272271120/work/aten/src/THC/generic/THCTensorMathBlas.cu:273

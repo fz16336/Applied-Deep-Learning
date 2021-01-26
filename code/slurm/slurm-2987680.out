@@ -1,0 +1,26 @@
+Using CUDA...
+Writing logs to logs/CNN_bn_epochs=50_dropout=0.5_bs=32_optim=SGD_decay=0.001_lr=0.001_momentum=0.9_mode=LMC_run_3
+validation loss: 1.31246, accuracy: 75.44, class_accuracy: [64.40677966101696, 92.10526315789474, 81.19658119658119, 71.68141592920354, 84.7457627118644, 55.96330275229358, 97.14285714285714, 93.80530973451327, 57.142857142857146, 78.8135593220339]
+class_avg: 77.7003688751116
+validation loss: 1.31571, accuracy: 74.41, class_accuracy: [57.6271186440678, 92.10526315789474, 82.90598290598291, 74.33628318584071, 83.05084745762711, 51.37614678899082, 97.14285714285714, 96.46017699115045, 51.02040816326531, 81.35593220338983]
+class_avg: 76.73810166410667
+Traceback (most recent call last):
+  File "/mnt/storage/software/languages/anaconda/Anaconda3-2019.07/lib/python3.7/multiprocessing/queues.py", line 242, in _feed
+    send_bytes(obj)
+  File "/mnt/storage/software/languages/anaconda/Anaconda3-2019.07/lib/python3.7/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+  File "/mnt/storage/software/languages/anaconda/Anaconda3-2019.07/lib/python3.7/multiprocessing/connection.py", line 404, in _send_bytes
+    self._send(header + buf)
+  File "/mnt/storage/software/languages/anaconda/Anaconda3-2019.07/lib/python3.7/multiprocessing/connection.py", line 368, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "train_urbansound.py", line 699, in <module>
+    main(parser.parse_args())
+  File "train_urbansound.py", line 202, in main
+    log_frequency=args.log_frequency,
+  File "train_urbansound.py", line 489, in train
+    results_epoch.append(self.validate(epoch, epochs, self.log_dir))
+  File "train_urbansound.py", line 568, in validate
+    if fname_label != results_epoch_LMC[epoch]["labels"][counter] or fname_label != results_epoch_MC[epoch]["labels"][counter]:
+IndexError: list index out of range
