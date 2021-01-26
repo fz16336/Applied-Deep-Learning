@@ -55,7 +55,7 @@ The dataset is structured as a list of dictionaries and in the format of PyTorch
 Below is a spectogram representation of the 5 acoustic input features. Note, the last 3 features (*chroma*.*spectral_contrast*,*Tonnetz*) are aggregated to form one feature set called CST.
 
 <!-- ![Inputs](/figures/input_features.png)  -->
-<centre><img src="/figures/input_features.png" alt="input" width="500"/></centre>
+<centre><img src="/figures/input_features.png" alt="input" width="800"/></centre>
 
 Furthermore, as part of the ETL process, we used PyTorch's DataLoader utility to load the different inputs for training the network.
 
@@ -65,13 +65,8 @@ The main architecture of the model proposed is a stacked convolutional neural ne
 
 The top stream uses the concatentaion of the LM input feature and CST; dubbed *LMCNet*. Whilst the bottom stream, uses MFCC and CST as its inputs and is dubbed *MCNet*.
 
-The main architecture of the paper would be denoted as *TCSNNNet*, in which both the *LMCNet* and *MCNet* streams were trained independently, and their predictions
-combined during testing i.e. late-fusion. Additionally,
-to confirm late-fusion effectiveness, another variation of the
-architecture, denoted as *MLMCNet* is created. Where all five
-features are combined linearly into one feature set named
-MLMC, and then passed into a single CNN identical to either
-of the streams. The crux of the original authors’ claim is that predictions made with late-fusion (*TCSNNNet*) would outperform other models such as *MLMCNet*, *LMCNet*, *MCNet*.
+The main architecture of the paper would be denoted as *TCSNNNet*, in which both the *LMCNet* and *MCNet* streams were trained independently, and their predictions combined during testing i.e. late-fusion. Additionally, to confirm late-fusion effectiveness, another variation of the
+architecture, denoted as *MLMCNet* is created. Where all five features are combined linearly into one feature set named MLMC, and then passed into a single CNN identical to either of the streams. The crux of the original authors’ claim is that predictions made with late-fusion (*TCSNNNet*) would outperform other models such as *MLMCNet*, *LMCNet*, *MCNet*.
 
 Below is a personally illustrated depiction of the architecture.
 
