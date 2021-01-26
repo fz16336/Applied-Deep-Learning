@@ -55,7 +55,7 @@ The dataset is structured as a list of dictionaries and in the format of PyTorch
 Below is a spectogram representation of the 5 acoustic input features. Note, the last 3 features (*chroma*.*spectral_contrast*,*Tonnetz*) are aggregated to form one feature set called CST.
 
 <!-- ![Inputs](/figures/input_features.png)  -->
-    <center><img src="/figures/input_features.png" alt="input" width="500"/></center>
+<centre><img src="/figures/input_features.png" alt="input" width="500"/></centre>
 
 Furthermore, as part of the ETL process, we used PyTorch's DataLoader utility to load the different inputs for training the network.
 
