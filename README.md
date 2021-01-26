@@ -48,23 +48,38 @@ The dataset is structured as a list of dictionaries and in the format of PyTorch
 -	**class**: class name
 -	**classID**: class number  [0…9]
 -	**features**: all the acoustic features to be used for training:
-    - *logmelspec*
-    - *mfcc*
+    - *logmelspec* (LM)
+    - *mfcc* (MFCC)
     - *chroma*
     - *spectral_contrast*
     - *Tonnetz*
 
-Below is a spectogram representation of the 5 acoustic input features.
+Below is a spectogram representation of the 5 acoustic input features. Note, the last 3 input features (*chroma*,*spectral_contrast*,*Tonnetz*) are aggregated to form one feature set called CST.
+
 ![Inputs](/figures/input_features.png)
 
 Furthermore, as part the ETL process, we used PyTorch's DataLoader utility to load the different inputs for training the network.
 
 ## The model architecture
 
-The main architecture of the model proposed is a stacked convolutional neural network (CNN) of two-stream identical network with 4 convolution layers, and 2 fully connected layers with a softmax layer at the end. Below is a personally illustrated depiction of the architecture.
+The main architecture of the model proposed is a stacked convolutional neural network (CNN) of two-stream identical network with 4 convolution layers, and 2 fully connected layers with a softmax layer at the end. 
+
+The top stream uses the concatentaion of the LM input feature and CST; dubbed *LMCNet*. Whilst the bottom stream, uses MFCC and CST as its inputs and this stream is dubbed *MCNet*.
+
+The main architecture of the paper would be denoted as *TCSNNNet*, in which both the *LMCNet* and *MCNet* streams were trained independently, and their predictions
+combined during testing i.e. late-fusion. Additionally,
+to confirm late-fusion effectiveness, another variation of the
+architecture, denoted as *MLMCNet* is created. Where all five
+features are combined linearly into one feature set named
+MLMC, and then passed into a single CNN identical to either
+of the streams. The crux of the original authors’ claim is that predictions made with late-fusion (TCSNNNet) would outperform other models such as MLMCNet, LMCNet, MCNet.
+
+Below is a personally illustrated depiction of the architecture.
 
 ![Architecture](/figures/architecture.png)
 
-Top stream is LMCNet, bottom stream is MCNet. Yellow layers indicate convolution layers, whilst purple ones are fully-connected networks. The red layer represents a pooling layer after max-pooling, to add clarity to the confusion in the paper. Filters of size $3\times3\times d$ are convolution filters, whilst $2\times2\times d$ are pooling filters, and $d\in\{32,64\}$ is the hyperparameter indicating the number of filters used in that specific layer
+Top stream is LMCNet, bottom stream is MCNet. Yellow layers indicate convolution layers, whilst purple ones are fully-connected networks. The red layer represents a pooling layer after max-pooling, to add clarity to the confusion in the paper. Filters of size 3x3xd are convolution filters, whilst 2x2xd are pooling filters, and $d\in\{32,64\} $ is the hyperparameter indicating the number of filters used in that specific layer.
+
+
 
 
